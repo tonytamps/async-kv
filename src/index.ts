@@ -1,3 +1,1 @@
-import { Num } from './Num'
-
-export { Num }
+export { all } from "./all";
