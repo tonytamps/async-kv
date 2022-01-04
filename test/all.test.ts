@@ -13,19 +13,6 @@ describe("all", () => {
     expect(result.second).toBe(2);
   });
 
-  it("should execute promises in parallel", async () => {
-    const DELAY = 10;
-
-    const start = Date.now();
-    await all({
-      first: () => delayedAsync(1, DELAY),
-      second: () => delayedAsync(2, DELAY),
-    });
-    const end = Date.now() - start;
-
-    expect(end).toBeLessThan(20);
-  });
-
   it("should retain object order", async () => {
     const result = await all({
       first: () => delayedAsync(1, 10),
