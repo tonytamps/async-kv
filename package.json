@@ -27,9 +27,9 @@
         "access": "public"
     },
     "files": [
-        "build/main",
-        "build/module",
-        "!**/__tests__",
+        "build/main/**",
+        "build/module/**",
+        "!**/__tests__/**",
         "!**/*.json",
         "CHANGELOG.md",
         "LICENSE",
