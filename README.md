@@ -4,7 +4,7 @@ Resolves promises in key-value pairs maintaining type information.
 
 ## Prerequisites
 
-- NodeJS 14 or later
+- NodeJS 12 or later
 
 ## Installation
 
@@ -47,6 +47,8 @@ const data = await all({
   games: getGames,
 })
 ```
+
+The really important information here is that the return types of the functions are mapped back to the `data` object and Typescript can continue knowing they've all been resolved.
 
 ## Contributing
 
