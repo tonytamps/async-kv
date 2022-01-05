@@ -2,40 +2,26 @@ name: Release & Publish
 
 on:
   push:
-    tags:
-      - 'v*'
+    branches:
+      - main
 
 jobs:
-  release:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ github.ref }}
-          release_name: ${{ github.ref }}
-          draft: false
-          prerelease: false
-
   publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Setup .npmrc file to publish to npm
-        uses: actions/setup-node@v1
-        with:
-          node-version: '16.x'
-          registry-url: 'https://registry.npmjs.org'
+      - name: Checkout
+        uses: actions/checkout@v2
       - name: Install
         run: npm install
       - name: Test
         run: npm run test
-      - name: Publish to npm
-        run: npm publish --access public
+      - name: Release
+        uses: cycjimmy/semantic-release-action@v2
+        with:
+          semantic_version: 18
+          extra_plugins: |
+              @semantic-release/changelog@6
+              @semantic-release/github@8
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
