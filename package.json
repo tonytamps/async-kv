@@ -62,7 +62,7 @@
         "url": "https://github.com/tonytamps/async-kv/issues"
     },
     "engines": {
-        "node": ">=14"
+        "node": ">=12"
     },
     "dependencies": {},
     "devDependencies": {
