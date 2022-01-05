@@ -23,8 +23,7 @@
         "cov": "run-s build test:unit cov:html cov:lcov && open-cli coverage/index.html",
         "cov:test": "jest --coverage --no-cache --runInBand",
         "version": "standard-version",
-        "reset-hard": "git clean -dfx && git reset --hard && npm i",
-        "prepare-release": "run-s reset-hard test cov version"
+        "prepare-release": "npm i && run-s test cov version"
     },
     "publishConfig": {
         "access": "public"
