@@ -31,7 +31,7 @@
     "files": [
         "build/main",
         "build/module",
-        "!**/*.spec.*",
+        "!**/__tests__",
         "!**/*.json",
         "CHANGELOG.md",
         "LICENSE",
